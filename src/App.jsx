@@ -1,21 +1,24 @@
-import useProducts from './hooks/useProducts'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React from "react";
+import Sidebar from "./components/sidebar";
+import Header from "./components/header";
+import useProducts from './hooks/useProducts';
+import StatCard from "./components/StatCard";
 
-
-
-function App() {
-
-const { products, addProduct, deleteProduct, updateProduct } = useProducts();
-    
+const App = () => {
+  const { products, addProduct } = useProducts();
 
   return (
-    <>
-    <div>Bonjour</div>
-    </>
-  )
-}
+    <div className="min-h-screen w-screen bg-neutral-950 relative overflow-hidden">
+      <Sidebar />
 
-export default App
+      <main className="ml-36 p-6 relative">
+        <div className="w-full flex flex-col">
+          <Header />
+          <StatCard />
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default App;
