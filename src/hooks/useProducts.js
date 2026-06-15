@@ -13,14 +13,10 @@
 //logique répétée
 //code difficile à lire
 
-
-
 //Il évite que :
 // - les composants deviennent trop chargé
 // - la logique soit dupliquée
 // - les composants touchent directement le service( Le composant : ne connaît pas le service, ne connaît pas localStorage, ne fait que afficher et déclencher des actions)
-
-
 
 import { useEffect, useState } from "react";
 import {
@@ -28,21 +24,21 @@ import {
   addProduct,
   updateProduct,
   deleteProduct,
+  saveProducts,
 } from "../API/productService";
 import { mockProducts } from "../mock/produits";
 
 export default function useProducts() {
-
   // 1. STATE central
   const [products, setProducts] = useState([]);
 
   // 2. CHARGEMENT INITIAL (API → state)
   useEffect(() => {
     const data = getProducts();
-    
+
     if (!data || data.length === 0) {
       // localStorage vide → on injecte les mocks
-      addProduct(mockProducts);
+      saveProducts(mockProducts);
       setProducts(mockProducts);
     } else {
       // localStorage déjà rempli
