@@ -1,4 +1,4 @@
-const mockProducts = [
+export const mockProducts = [
   {
     id: 1,
     name: "Nike Air Max 270",
@@ -40,5 +40,3 @@ const mockProducts = [
     description: "Tablette polyvalente pour divertissement et travail."
   }
 ];
-
-export default mockProducts;

@@ -16,7 +16,7 @@
 
 
 //Il évite que :
-// - les composants deviennent trop chargé
+// - les composants deviennent trop chargés
 // - la logique soit dupliquée
 // - les composants touchent directement le service( Le composant : ne connaît pas le service, ne connaît pas localStorage, ne fait que afficher et déclencher des actions)
 
@@ -39,7 +39,6 @@ export default function useProducts() {
   // 2. CHARGEMENT INITIAL (API → state)
   useEffect(() => {
     const data = getProducts();
-    
     if (!data || data.length === 0) {
       // localStorage vide → on injecte les mocks
       addProduct(mockProducts);
