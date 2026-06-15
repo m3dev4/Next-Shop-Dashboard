@@ -1,13 +1,23 @@
-import React from 'react'
-import Sidebar from './components/sidebar'
+import React from "react";
+import Sidebar from "./components/sidebar";
+import Header from "./components/header";
+import useProduct from "./hooks/useProducts";
+
 
 const App = () => {
-  return (
-    <div className='flex w-screen min-h-screen items-center justify-center'>
-       <Sidebar />
-       <h1>Dashboard</h1>
-    </div>
-  )
-}
+  const { products, addProduct } = useProduct();
 
-export default App
+  return (
+    <div className="min-h-screen w-screen bg-neutral-950 relative overflow-hidden">
+      <Sidebar />
+
+      <main className="ml-36 p-6 relative">
+        <div className="w-full">
+          <Header />
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default App;

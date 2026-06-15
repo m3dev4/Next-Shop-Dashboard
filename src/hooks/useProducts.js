@@ -23,13 +23,13 @@
 
 
 import { useEffect, useState } from "react";
-import {mockProducts} from '../mock/produits'
 import {
   getProducts,
   addProduct,
   updateProduct,
   deleteProduct,
 } from "../API/productService";
+import { mockProducts } from "../mock/produits";
 
 export default function useProducts() {
 

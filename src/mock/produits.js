@@ -1,4 +1,4 @@
-const mockProducts = [
+export const mockProducts = [
   {
     id: 1,
     name: "Nike Air Max 270",
@@ -41,4 +41,3 @@ const mockProducts = [
   }
 ];
 
-export default mockProducts;
