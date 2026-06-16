@@ -14,7 +14,7 @@ const Sidebar = () => {
           <div className="h-6 w-6 bg-red-400 rounded-sm flex items-center justify-center text-white shadow-md">
             N
           </div>
-          <span className="text-xl font-semibold">Next Shop</span>
+          <span className="text-xl font-semibold text-black">Next Shop</span>
         </header>
 
         <div className="h-0.5 w-full bg-stone-300" />

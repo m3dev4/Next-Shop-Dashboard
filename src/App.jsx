@@ -1,18 +1,19 @@
-import React from "react";
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import useProduct from "./hooks/useProducts";
-import { useEffect } from "react";
 import { Wallet } from "lucide-react";
 import { Boxes } from "lucide-react";
 import { Package } from "lucide-react";
 import ListProducts from "./components/ListProducts";
-import CategoryDoughnut from "./components/doghnu";
+import InventoryChart from "./components/InventoryChart";
+import CategoryDoughnut from "./components/doghnuts";
+import { useEffect } from "react";
 
 const App = () => {
   //App possede le state qui est product. C'est ici qu'il est initialiser
   const { products, addProduct } = useProduct();
 
+ console.log("App", products)
   const totalStock = products.reduce(
     (total, product) => total + product.stock,
     0,
@@ -23,7 +24,7 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen w-screen bg-slate-50 relative overflow-hidden">
+    <div className="min-h-screen w-screen bg-gradient-to-r from-stone-100 to-zinc-100 relative overflow-hidden">
       <Sidebar />
 
       <main className="ml-36 p-6 relative">
@@ -43,13 +44,13 @@ const App = () => {
 
                 <div className="grid grid-cols-12 w-full gap-5">
                   {/* Nombre produits */}
-                  <div className="col-span-4 h-36 rounded-2xl bg-gray-900/80 border border-gray-800 p-6 flex justify-between items-center shadow-lg">
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg">
                     <div>
-                      <p className="text-gray-400 text-sm">
+                      <p className="text-gray-500 text-sm">
                         Nombre de produits
                       </p>
 
-                      <h2 className="text-white text-3xl font-bold mt-2">
+                      <h2 className="text-black text-3xl font-bold mt-2">
                         {products.length}
                       </h2>
                     </div>
@@ -60,11 +61,11 @@ const App = () => {
                   </div>
 
                   {/* Stock */}
-                  <div className="col-span-4 h-36 rounded-2xl bg-gray-900/80 border border-gray-800 p-6 flex justify-between items-center shadow-lg">
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg">
                     <div>
-                      <p className="text-gray-400 text-sm">Stock disponible</p>
+                      <p className="text-gray-500 text-sm">Stock disponible</p>
 
-                      <h2 className="text-white text-3xl font-bold mt-2">
+                      <h2 className="text-black text-3xl font-bold mt-2">
                         {totalStock}
                       </h2>
                     </div>
@@ -75,11 +76,11 @@ const App = () => {
                   </div>
 
                   {/* Valeur stock */}
-                  <div className="col-span-4 h-36 rounded-2xl bg-gray-900/80 border border-gray-800 p-6 flex justify-between items-center shadow-lg">
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg">
                     <div>
-                      <p className="text-gray-400 text-sm">Valeur du stock</p>
+                      <p className="text-gray-500 text-sm">Valeur du stock</p>
 
-                      <h2 className="text-white text-2xl font-bold mt-2">
+                      <h2 className="text-black text-2xl font-bold mt-2">
                         {totalValue.toLocaleString()} FCFA
                       </h2>
                     </div>
@@ -90,7 +91,10 @@ const App = () => {
                   </div>
                 </div>
               </div>
-      
+              <div className="mt-5 flex justify-start items-center">
+                <InventoryChart products={products} />
+                <CategoryDoughnut produits={products} />
+              </div>
               <div className="mt-5">
                 <ListProducts produits={products} />
               </div>

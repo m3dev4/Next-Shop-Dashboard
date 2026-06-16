@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function ListProducts({produits}){
     console.log(produits)
     return(
@@ -24,9 +26,9 @@ function ListProducts({produits}){
                         <td>{p.stock}</td>
                         <td>{p.category}</td>
                         <td className="space-x-2">
-                            <button className="btn btn-primary btn-xs">modifier</button>
-                            <button className="btn btn-error btn-xs">supprimer</button>
-                            <button className="btn btn-ghost btn-xs">details</button>
+                            <button className="btn btn-primary">modifier</button>
+                            <button className="btn btn-error">supprimer</button>
+                            <Link to={`/detail/${p.id}`}><button className="btn btn-secondary">details</button></Link>
                         </td>
                     </tr>
                     ))

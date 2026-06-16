@@ -1,11 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import './index.css'
-import App from './App.jsx'
-import CreerProduit from './components/creer-produit.jsx'
-import Layout from './layout.jsx'
-
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import App from "./App.jsx";
+import CreerProduit from "./components/creer-produit.jsx";
+import Layout from "./layout.jsx";
+import Detail from "./components/detail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,16 +13,13 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <App /> },
       { path: "/creer-produit", element: <CreerProduit /> },
-
+      { path: "/detail/:id", element: <Detail /> },
     ],
-    
   },
 ]);
 
-
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
-)
+  </StrictMode>,
+);
