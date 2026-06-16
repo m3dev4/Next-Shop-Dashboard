@@ -40,4 +40,3 @@ export const mockProducts = [
     description: "Tablette polyvalente pour divertissement et travail."
   }
 ];
-

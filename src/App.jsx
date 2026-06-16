@@ -6,8 +6,10 @@ import { useEffect } from "react";
 import { Wallet } from "lucide-react";
 import { Boxes } from "lucide-react";
 import { Package } from "lucide-react";
+import ListProducts from "./components/ListProducts";
 
 const App = () => {
+  //App possede le state qui est product. C'est ici qu'il est initialiser
   const { products, addProduct } = useProduct();
 
   const totalStock = products.reduce(
@@ -86,6 +88,9 @@ const App = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="mt-5">
+                <ListProducts produits={products} />
               </div>
             </div>
           </>
