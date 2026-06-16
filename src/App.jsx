@@ -20,7 +20,7 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen w-screen   relative overflow-hidden">
+    <div className="min-h-screen w-screen bg-slate-50 relative overflow-hidden">
       <Sidebar />
 
       <main className="ml-36 p-6 relative">

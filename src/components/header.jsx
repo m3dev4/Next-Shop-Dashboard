@@ -3,7 +3,7 @@ import { Bell } from "lucide-react";
 
 const Header = () => {
   return (
-    <div className="w-full bg-gray-50 h-22 flex rounded-lg shadow-md">
+    <div className="w-full bg-white border border-slate-200 h-22 flex rounded-lg shadow-md">
       <div className="flex justify-between items-center px-6 w-full">
         <input
           type="text"
