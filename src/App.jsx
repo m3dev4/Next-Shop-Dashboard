@@ -7,6 +7,7 @@ import { Wallet } from "lucide-react";
 import { Boxes } from "lucide-react";
 import { Package } from "lucide-react";
 import ListProducts from "./components/ListProducts";
+import CategoryDoughnut from "./components/doghnu";
 
 const App = () => {
   //App possede le state qui est product. C'est ici qu'il est initialiser
@@ -89,6 +90,7 @@ const App = () => {
                   </div>
                 </div>
               </div>
+      
               <div className="mt-5">
                 <ListProducts produits={products} />
               </div>

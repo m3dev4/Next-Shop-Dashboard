@@ -2,7 +2,7 @@ function ListProducts({produits}){
     console.log(produits)
     return(
         <div>
-            <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+            <div className="overflow-x-auto rounded-box border border-base-content/5 text-black">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -23,9 +23,9 @@ function ListProducts({produits}){
                         <td>{p.price}</td>
                         <td>{p.stock}</td>
                         <td>{p.category}</td>
-                        <td>
-                            <button className="btn btn-ghost btn-xs">modifier</button>
-                            <button className="btn btn-ghost btn-xs">supprimer</button>
+                        <td className="space-x-2">
+                            <button className="btn btn-primary btn-xs">modifier</button>
+                            <button className="btn btn-error btn-xs">supprimer</button>
                             <button className="btn btn-ghost btn-xs">details</button>
                         </td>
                     </tr>
