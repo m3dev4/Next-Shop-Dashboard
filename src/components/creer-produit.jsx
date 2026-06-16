@@ -1,8 +1,10 @@
-
+import Sidebar from "./sidebar"
 
 function CreerProduit(){
     return(
-<div></div>
+<div>
+    <Sidebar/>
+</div>
     )
 }
 
