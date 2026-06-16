@@ -23,10 +23,10 @@ function ListProducts({produits}){
                         <td>{p.price}</td>
                         <td>{p.stock}</td>
                         <td>{p.category}</td>
-                        <td>
-                            <button className="btn btn-ghost btn-xs">modifier</button>
-                            <button className="btn btn-ghost btn-xs">supprimer</button>
-                            <button className="btn btn-ghost btn-xs">details</button>
+                        <td className="space-x-2">
+                            <button className="btn btn-primary">modifier</button>
+                            <button className="btn btn-error">supprimer</button>
+                            <button className="btn btn-secondary">details</button>
                         </td>
                     </tr>
                     ))

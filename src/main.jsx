@@ -4,18 +4,21 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import CreerProduit from './components/creer-produit.jsx'
+import Layout from './layout.jsx'
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element:<App />
+    element: <Layout />,
+    children: [
+      { path: "/", element: <App /> },
+      { path: "/creer-produit", element: <CreerProduit /> },
+
+    ],
+    
   },
-  {
-    path: '/creer-produit',
-    element: <CreerProduit />
-  }
-])
+]);
+
 
 
 createRoot(document.getElementById('root')).render(

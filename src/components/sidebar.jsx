@@ -1,9 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+
   return (
-    <aside className="fixed top-0 left-0 h-screen w-36 bg-amber-50 shadow-md border-r border-stone-200">
+    <aside className="fixed top-0 left-0 h-screen w-40 bg-white shadow-sm border-r border-slate-200">
+      {" "}
       <div className="flex flex-col items-center space-y-5 py-4">
         <header className="flex items-center gap-2">
           <div className="h-6 w-6 bg-red-400 rounded-sm flex items-center justify-center text-white shadow-md">
@@ -19,7 +24,7 @@ const Sidebar = () => {
             <li>
               <Link
                 to="/"
-                className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-amber-100 hover:text-gray-900"
+                className={`block rounded-md px-3 py-2 text-sm font-medium ${location.pathname === "/" ? "bg-blue-200 text-blue-900" : "text-gray-700 hover:bg-amber-100 hover:text-gray-900"}`}
               >
                 Dashboard
               </Link>
@@ -27,7 +32,7 @@ const Sidebar = () => {
             <li>
               <Link
                 to="/creer-produit"
-                className="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-amber-100 hover:text-gray-900"
+                className={`block rounded-md px-3 py-2 text-sm font-medium ${location.pathname === "/creer-produit" ? "bg-blue-200 text-blue-900" : "text-gray-700 hover:bg-amber-100 hover:text-gray-900"}`}
               >
                 Créer un produit
               </Link>

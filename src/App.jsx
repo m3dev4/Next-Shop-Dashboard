@@ -1,12 +1,11 @@
-import React from "react";
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import useProduct from "./hooks/useProducts";
-import { useEffect } from "react";
 import { Wallet } from "lucide-react";
 import { Boxes } from "lucide-react";
 import { Package } from "lucide-react";
 import ListProducts from "./components/ListProducts";
+import InventoryChart from "./components/InventoryChart";
 
 const App = () => {
   //App possede le state qui est product. C'est ici qu'il est initialiser
@@ -22,7 +21,7 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen w-screen   relative overflow-hidden">
+    <div className="min-h-screen w-screen bg-slate-50 relative overflow-hidden">
       <Sidebar />
 
       <main className="ml-36 p-6 relative">
@@ -88,6 +87,9 @@ const App = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="mt-5">
+                <InventoryChart products={products} />
               </div>
               <div className="mt-5">
                 <ListProducts produits={products} />
