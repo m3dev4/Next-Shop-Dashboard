@@ -1,12 +1,19 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import useProducts from "../hooks/useProducts";
+import { useState } from "react";
+import EditProductModal from "./EditProductModal";
 
-function ListProducts({ produits, deleteProduct }) {
-  const handleDelete = (id) => {
+function ListProducts({ produits, deleteProduct, updateProduct }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    document.getElementById("my_modal_1").showModal();
+  };
+
+  function handleClick(id){
     deleteProduct(id)
   }
-
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 w-full flex flex-col">
       <h2 className="text-lg font-bold text-gray-800 mb-6">
@@ -52,10 +59,10 @@ function ListProducts({ produits, deleteProduct }) {
                   </span>
                 </td>
                 <td className="py-4 px-4 flex gap-2">
-                  <button className="px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors">
+                  <button onClick={() => openModal(p)} className="px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors">
                     Modifier
                   </button>
-                  <button className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors" onClick={() => deleteProduct(p.id)}>
+                  <button onClick={()=>handleClick(p.id)} className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors">
                     Supprimer
                   </button>
                   <Link to={`/detail/${p.id}`}>
@@ -68,6 +75,8 @@ function ListProducts({ produits, deleteProduct }) {
             ))}
           </tbody>
         </table>
+
+        <EditProductModal updateProduct={updateProduct} setSelectedProduct={setSelectedProduct} selectedProduct={selectedProduct}/>
       </div>
     </div>
   );

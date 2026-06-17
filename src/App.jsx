@@ -7,11 +7,10 @@ import { Package } from "lucide-react";
 import ListProducts from "./components/ListProducts";
 import InventoryChart from "./components/InventoryChart";
 import CategoryDoughnut from "./components/doghnuts";
-import { useEffect } from "react";
 
 const App = () => {
   //App possede le state qui est product. C'est ici qu'il est initialiser
-  const { products, deleteProduct } = useProduct();
+  const { products, updateProduct, deleteProduct } = useProduct();
 
  console.log("App", products)
   const totalStock = products.reduce(
@@ -96,7 +95,7 @@ const App = () => {
                 <CategoryDoughnut produits={products} />
               </div>
               <div className="py-5">
-                <ListProducts produits={products} deleteProduct={deleteProduct} />
+                <ListProducts updateProduct={updateProduct} deleteProduct={deleteProduct} produits={products} />
               </div>
             </div>
           </>

@@ -62,8 +62,8 @@ export default function useProducts() {
 
   // 4. SUPPRIMER PRODUIT
   const handleDeleteProduct = (id) => {
-    deleteProduct(id);
-    setProducts((prev) => prev.filter((p) => p.id !== id));
+    const filteredProducts=deleteProduct(id);
+    setProducts(filteredProducts);
   };
 
   // 5. MODIFIER PRODUIT
