@@ -1,122 +1,110 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import Sidebar from "./components/sidebar";
+import Header from "./components/header";
+import useProduct from "./hooks/useProducts";
+import { Wallet } from "lucide-react";
+import { Boxes } from "lucide-react";
+import { Package } from "lucide-react";
+import ListProducts from "./components/ListProducts";
+import InventoryChart from "./components/InventoryChart";
+import CategoryDoughnut from "./components/doghnuts";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  //App possede le state qui est product. C'est ici qu'il est initialiser
+  const { products, updateProduct, deleteProduct } = useProduct();
+
+ console.log("App", products)
+  const totalStock = products.reduce(
+    (total, product) => total + product.stock,
+    0,
+  );
+  const totalValue = products.reduce(
+    (total, product) => total + product.price * product.stock,
+    0,
+  );
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="min-h-screen w-screen bg-linear-to-r from-white via-white to-zinc-50 relative overflow-hidden">
+      <Sidebar />
 
-      <div className="ticks"></div>
+      <main className="ml-36 p-6 relative">
+        {products && products.length > 0 ? (
+          <>
+            <div className="w-full px-7 space-y-5">
+              <Header />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+              <div className="flex flex-col items-start ">
+                <div className="py-5">
+                  <h1 className="text-black text-2xl font-bold">Dashboard</h1>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+                  <p className="text-gray-500">
+                    Voici les informations clés de votre boutique en ligne
+                  </p>
+                </div>
 
-export default App
+                <div className="grid grid-cols-12 w-full gap-5">
+                  {/* Nombre produits */}
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg hover:scale-105 transition-transform duration-300">
+                    <div>
+                      <p className="text-gray-500 text-sm">
+                        Nombre de produits
+                      </p>
+
+                      <h2 className="text-black text-3xl font-bold mt-2">
+                        {products.length}
+                      </h2>
+                    </div>
+
+                    <div className="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                      <Package className="text-blue-400" size={28} />
+                    </div>
+                  </div>
+
+                  {/* Stock */}
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg hover:scale-105 transition-transform duration-300">
+                    <div>
+                      <p className="text-gray-500 text-sm">Stock disponible</p>
+
+                      <h2 className="text-black text-3xl font-bold mt-2">
+                        {totalStock}
+                      </h2>
+                    </div>
+
+                    <div className="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center">
+                      <Boxes className="text-green-400" size={28} />
+                    </div>
+                  </div>
+
+                  {/* Valeur stock */}
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg hover:scale-105 transition-transform duration-300">
+                    <div>
+                      <p className="text-gray-500 text-sm">Valeur du stock</p>
+
+                      <h2 className="text-black text-2xl font-bold mt-2">
+                        {totalValue.toLocaleString()} FCFA
+                      </h2>
+                    </div>
+
+                    <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                      <Wallet className="text-purple-400" size={28} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5 flex justify-start items-center py-5">
+                <InventoryChart products={products} />
+                <CategoryDoughnut produits={products} />
+              </div>
+              <div className="py-5">
+                <ListProducts updateProduct={updateProduct} deleteProduct={deleteProduct} produits={products} />
+              </div>
+            </div>
+          </>
+        ) : (
+          <p className="text-white">Aucune données</p>
+        )}
+      </main>
+    </div>
+  );
+};
+
+export default App;
