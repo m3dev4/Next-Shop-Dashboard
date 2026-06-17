@@ -1,4 +1,3 @@
-import React from "react";
 import useProducts from "../hooks/useProducts";
 import { useParams, Link } from "react-router-dom";
 
