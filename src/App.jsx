@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 const App = () => {
   //App possede le state qui est product. C'est ici qu'il est initialiser
-  const { products, addProduct } = useProduct();
+  const { products, deleteProduct } = useProduct();
 
  console.log("App", products)
   const totalStock = products.reduce(
@@ -96,7 +96,7 @@ const App = () => {
                 <CategoryDoughnut produits={products} />
               </div>
               <div className="py-5">
-                <ListProducts produits={products} />
+                <ListProducts produits={products} deleteProduct={deleteProduct} />
               </div>
             </div>
           </>

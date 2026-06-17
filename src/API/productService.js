@@ -60,6 +60,7 @@ export const deleteProduct = (id) => {
   );
 
   saveProducts(filteredProducts);
+  
 
   return filteredProducts;
 };

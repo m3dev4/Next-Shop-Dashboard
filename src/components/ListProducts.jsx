@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import useProducts from "../hooks/useProducts";
 
-function ListProducts({ produits }) {
+function ListProducts({ produits, deleteProduct }) {
+  const handleDelete = (id) => {
+    deleteProduct(id)
+  }
+
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 w-full flex flex-col">
       <h2 className="text-lg font-bold text-gray-800 mb-6">
@@ -49,7 +55,7 @@ function ListProducts({ produits }) {
                   <button className="px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors">
                     Modifier
                   </button>
-                  <button className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors">
+                  <button className="px-3 py-1.5 text-xs font-medium rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors" onClick={() => deleteProduct(p.id)}>
                     Supprimer
                   </button>
                   <Link to={`/detail/${p.id}`}>
