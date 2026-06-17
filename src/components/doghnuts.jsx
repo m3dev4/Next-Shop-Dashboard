@@ -56,69 +56,17 @@ const CategoryDoughnut = ({ produits = [] }) => {
   };
 
   return (
-    <div
-      className="
-      
-      rounded-3xl 
-      shadow-sm 
-      p-6
-      w-[50%]
-      h-[50%]
-      flex
-      flex-col
-      items-center
-    "
-    >
-      <h2
-        className="
-        text-lg
-        font-semibold
-        text-gray-800
-        mb-4
-      "
-      >
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 w-1/2 mx-2 flex flex-col">
+      <h2 className="text-lg font-bold text-gray-800 text-center mb-6">
         Stock par catégorie
       </h2>
 
-      <div
-        className="
-        relative
-        w-full
-
-      "
-      >
+      <div className="relative w-full flex-1 min-h-[300px]">
         <Doughnut data={data} options={options} />
 
-        <div
-          className="
-          absolute
-          inset-0
-          flex
-          flex-col
-          items-center
-          justify-center
-          pointer-events-none
-        "
-        >
-          <span
-            className="
-            text-3xl
-            font-bold
-            text-gray-800
-          "
-          >
-            {totalStock}
-          </span>
-
-          <span
-            className="
-            text-sm
-            text-gray-500
-            
-          "
-          >
-            Produits
-          </span>
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-6">
+          <span className="text-3xl font-bold text-gray-800">{totalStock}</span>
+          <span className="text-sm text-gray-500">Produits</span>
         </div>
       </div>
     </div>

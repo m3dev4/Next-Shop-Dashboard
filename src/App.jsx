@@ -24,16 +24,16 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen w-screen bg-gradient-to-r from-stone-100 to-zinc-100 relative overflow-hidden">
+    <div className="min-h-screen w-screen bg-linear-to-r from-white via-white to-zinc-50 relative overflow-hidden">
       <Sidebar />
 
       <main className="ml-36 p-6 relative">
         {products && products.length > 0 ? (
           <>
-            <div className="w-full">
+            <div className="w-full px-7 space-y-5">
               <Header />
 
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start ">
                 <div className="py-5">
                   <h1 className="text-black text-2xl font-bold">Dashboard</h1>
 
@@ -44,7 +44,7 @@ const App = () => {
 
                 <div className="grid grid-cols-12 w-full gap-5">
                   {/* Nombre produits */}
-                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg">
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg hover:scale-105 transition-transform duration-300">
                     <div>
                       <p className="text-gray-500 text-sm">
                         Nombre de produits
@@ -61,7 +61,7 @@ const App = () => {
                   </div>
 
                   {/* Stock */}
-                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg">
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg hover:scale-105 transition-transform duration-300">
                     <div>
                       <p className="text-gray-500 text-sm">Stock disponible</p>
 
@@ -76,7 +76,7 @@ const App = () => {
                   </div>
 
                   {/* Valeur stock */}
-                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg">
+                  <div className="col-span-4 h-36 rounded-2xl bg-white border border-gray-100 p-6 flex justify-between items-center shadow-lg hover:scale-105 transition-transform duration-300">
                     <div>
                       <p className="text-gray-500 text-sm">Valeur du stock</p>
 
@@ -91,11 +91,11 @@ const App = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-5 flex justify-start items-center">
+              <div className="mt-5 flex justify-start items-center py-5">
                 <InventoryChart products={products} />
                 <CategoryDoughnut produits={products} />
               </div>
-              <div className="mt-5">
+              <div className="py-5">
                 <ListProducts produits={products} />
               </div>
             </div>
